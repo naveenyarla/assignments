@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Portfolio Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Bank Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Zip Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <tr th:each="portfolio, iterator :${portfolioList}">
+                <td th:text="${portfolio.getId()}"></td>
+                <td th:text="${portfolio.getBankName()}"></td>
+                <td th:text="${portfolio.getBankType()}"></td>
+                <td th:text="${portfolio.getCity()}"></td>
+                <td th:text="${portfolio.getState()}"></td>
+                <td th:text="${portfolio.getZipCode()}"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+</body>
+</html>

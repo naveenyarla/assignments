@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Portfolio Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p>Search by Option a or option b </p>
+<p>a. Zip Code or State or City or Type  or BankName</p>
+<div class="container" id="orDiv">
+
+    <form th:action="@{/portfoliosearch}" th:object="${portfolio}" method="POST">
+        <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td>Zip Code</td>
+                <td><select name="zipCode">
+                    <option th:each="zipCode :${zipCodes}"
+                            th:text="${zipCode}">
+                </select></td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td><select name="state">
+                    <option th:each="state :${states}"
+                            th:text="${state}">
+                </select></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td><select name="city">
+                    <option th:each="city :${cities}"
+                            th:text="${city}">
+                </select></td>
+            </tr>
+            <tr>
+                <td>Bank Type</td>
+                <td><select name="bankType">
+                    <option th:each="bankType :${bankTypes}"
+                            th:text="${bankType}">
+                </select></td>
+            </tr>
+            <tr>
+                <td>Bank Name</td>
+                <td><select name="bankName">
+                    <option th:each="bankName :${bankNames}"
+                            th:text="${bankName}">
+                </select></td>
+            </tr>
+        </table>
+    </div>
+        <input id="or_id"  type="submit" name="action" value="or"/>
+    </form>
+
+</div>
+
+<p>b. Search by City and State</p>
+
+<div class="container" id="andDiv">
+
+    <form th:action="@{/portfoliosearch}" th:object="${portfolio}" method="POST">
+        <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td>City</td>
+                <td><select name="city">
+                    <option th:each="city :${cities}"
+                            th:text="${city}">
+                </select></td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td><select name="state">
+                    <option th:each="state :${states}"
+                            th:text="${state}">
+                </select></td>
+            </tr>
+        </table>
+        </div>
+        <input id="and_id"  type="submit" name="action" value="and"/>
+    </form>
+
+</div>
+
+</body>
+</html>
